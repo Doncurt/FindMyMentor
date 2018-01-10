@@ -41,8 +41,8 @@ app.set('view engine', 'handlebars');
 //Rputes for navigation
 require('./controllers/auxRoutes.js')(app);
 require('./controllers/menteeReplies.js')(app);
-require('./controllers/auth')(app)
-
+require('./controllers/auth.js')(app)
+require('./controllers/mentorRoutes.js')(app)
 
 app.listen(process.env.PORT||3000, ()=> {
   console.log('Server for PutIt listening on port 3000!')
