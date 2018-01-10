@@ -1,4 +1,4 @@
-var MentorPost = require('../models/MentorPost');
+var MentorPost = require('../models/mentorPost');
 var MenteeReply = require('../models/menteeReply');
 
 module.exports = (app) => {
