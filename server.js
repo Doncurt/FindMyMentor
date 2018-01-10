@@ -39,6 +39,9 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 //Rputes for navigation
+require('./controllers/auxRoutes.js')(app);
+require('./controllers/menteeReplies.js')(app);
+require('./controllers/auth')(app)
 
 
 app.listen(process.env.PORT||3000, ()=> {
