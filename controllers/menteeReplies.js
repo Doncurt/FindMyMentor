@@ -4,7 +4,7 @@ var MenteeReply = require('../models/menteeReply');
 module.exports = (app) => {
       // CREATE
 
-    app.post('/mentor-posts/:postId/menteeReply', (req, res) => {
+    app.post('/mentor-posts/:mentorPostId/menteeReply', (req, res) => {
       // INSTANTIATE INSTANCE OF MODEL
 
       var menteeReply = new MenteeReply(req.body);
