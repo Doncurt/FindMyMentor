@@ -1,4 +1,5 @@
 
+
 module.exports = (app) => {
 app.get('/contact', (req, res, next) => {
       var currentUser = req.user;

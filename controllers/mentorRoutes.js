@@ -1,9 +1,14 @@
+var MentorPost = require('../models/mentorPost');
+var jwt = require('jsonwebtoken');
+var User = require('../models/user');
+
 /*
 ALL ROUTES FOR ANYTHING INVOLVING THE MENTOR/MENTEE PAGES
 
 */
 // INDEX
 module.exports = (app) => {
+
 app.get('/', (req, res) => {
   var currentUser = req.user;
 
