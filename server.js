@@ -1,5 +1,5 @@
 // .env rewuirement
-require('dotenv').config();
+//require('dotenv').config();
 //module imports and node
 const express = require('express')
 const exphbs  = require('express-handlebars');
