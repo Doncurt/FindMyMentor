@@ -10,7 +10,7 @@ var autoPopulateMenteeReply = function(next) {
   this.populate('MenteeReply');
   next();
 };
-MenteeReplychema.
+MenteeReplySchema.
   pre('find', autoPopulateMenteeReply).
   pre('findOne', autoPopulateMenteeReply);
 module.exports = mongoose.model('MenteeReply', MenteeReplySchema);
