@@ -3,10 +3,11 @@ ALL ROUTES FOR ANYTHING INVOLVING THE MENTOR/MENTEE PAGES
 
 */
 // INDEX
+module.exports = (app) => {
 app.get('/', (req, res) => {
   var currentUser = req.user;
 
-  Post.find({}).then((mentorPosts) => {
+  MentorPost.find({}).then((mentorPosts) => {
     res.render('mentor-index', { mentorPosts, currentUser })
   }).catch((err) => {
     console.log(err.message);
@@ -19,7 +20,7 @@ app.get('/mentor-posts/new', (req, res) => {
 
 // CREATE'S POST ROUTE
 app.post('/mentor-posts', (req, res) => {
-  Review.create(req.body).then((mentorPosts) => {
+  MentorPost.create(req.body).then((mentorPosts) => {
     console.log(mentorPosts);
     res.redirect('/');
   }).catch((err) => {
@@ -28,9 +29,11 @@ app.post('/mentor-posts', (req, res) => {
 })
 // SHOW
 app.get('/mentor-posts/:id', (req, res) => {
-  Review.findById(req.params.id).then((mentorPosts) => {
+  MentorPost.findById(req.params.id).then((mentorPosts) => {
     res.render('mentor-posts-show', { mentorPosts,currentUser})
   }).catch((err) => {
     console.log(err.message);
   })
 })
+
+} //END OF MODULE EXPORT
