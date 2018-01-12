@@ -20,11 +20,7 @@
   },
   "homepage": "https://github.com/Doncurt/FindMyMentor#readme",
   "dependencies": {
-<<<<<<< HEAD
-    "bcrypt-nodejs": "0.0.3",
-=======
     "bcrypt": "^1.0.3",
->>>>>>> e7f5c836b4caffcc1d6b47bda2ef47a72cfd6ee6
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
