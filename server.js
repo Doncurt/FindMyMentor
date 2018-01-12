@@ -1,5 +1,5 @@
 // .env rewuirement
-//require('dotenv').config();
+require('dotenv').config();
 //module imports and node
 const express = require('express')
 const exphbs  = require('express-handlebars');
@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 
 const app = express()
 // mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/findMyMentor');
+mongoose.connect(process.env.MONGODB_URI ||'mongodb://127.0.0.1/findMyMentor');
 
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }));
