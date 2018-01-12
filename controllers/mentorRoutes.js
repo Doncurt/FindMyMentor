@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 })
 //CREATE'S GET ROUTE
 app.get('/mentor-posts/new', (req, res) => {
-  res.render('mentor-posts-new', {});
+  res.render('mentor-new', {});
 })
 
 // CREATE'S POST ROUTE
