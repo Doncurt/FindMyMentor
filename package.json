@@ -4,7 +4,8 @@
   "description": "findMyMentor for web3",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
+
   },
   "repository": {
     "type": "git",
@@ -20,11 +21,8 @@
   },
   "homepage": "https://github.com/Doncurt/FindMyMentor#readme",
   "dependencies": {
-<<<<<<< HEAD
-    "bcrypt-nodejs": "0.0.3",
-=======
     "bcrypt": "^1.0.3",
->>>>>>> e7f5c836b4caffcc1d6b47bda2ef47a72cfd6ee6
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
@@ -33,5 +31,10 @@
     "jsonwebtoken": "^8.1.0",
     "method-override": "^2.3.10",
     "mongoose": "^4.13.9"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^4.1.0"
   }
 }
