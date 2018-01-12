@@ -5,7 +5,6 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha"
-
   },
   "repository": {
     "type": "git",
@@ -22,10 +21,6 @@
   "homepage": "https://github.com/Doncurt/FindMyMentor#readme",
   "dependencies": {
     "bcrypt": "^1.0.3",
-<<<<<<< HEAD
-    "bcrypt-nodejs": "0.0.3",
-=======
->>>>>>> a20459d522431b71e4f6e917f5801969290488d2
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
