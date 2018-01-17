@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <a href="{{mentorPost.url}}" class="lead">{{mentorPosts.name}}</a>
+    <p>{{mentorPosts.summary}}</p>
+
+  </div>
+  <div class="col-sm-6 col-sm-offset-3">
+  <form method="POST" action="/mentor-posts/{{mentorPosts._id}}/menteeReply">
+    <label for="comment-content"> Comment </label>
+    <textarea name="content" id="comment-content" class='form-control' placeholder="Comment"></textarea>
+    <div class="text-right">
+      <button type="submit">Comment</button>
+    </div>
+  </form>
+  <div>
+    <p>Comments:</p>
+    {{#each post.comments}}
+      <li class="list-group-item">
+        <a href="/comments/{{this._id}}/new">Comment</a>
+        <p>{{this.content}}</p>
+        {{#if this.comments}}
+          {{> comments}}
+        {{/if}}
+      </li>
+    {{/each}}
+  </div>
+
+</div>

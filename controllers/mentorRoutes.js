@@ -38,6 +38,7 @@ app.post('/mentor-posts', (req, res) => {
 })
 // SHOW
 app.get('/mentor-posts/:id', (req, res) => {
+  var currentUser = req.user;
   MentorPost.findById(req.params.id).then((mentorPosts) => {
     const currentUser = req.user;
     res.render('mentor-posts-show', { mentorPosts, currentUser})
