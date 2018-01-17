@@ -30,25 +30,29 @@
   <div class="container">
     <header class="header clearfix">
       <nav>
+      <ul class="nav nav-pills float-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/resources">Resources</a>
+        </li>
         {{#if currentUser}}
-        <ul class="nav nav-pills float-right">
           <li class="nav-item">
             <a class="nav-link" href="/mentor-posts/new">Post</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/logout">Logout</a>
           </li>
-        </ul>
         {{else}}
-        <ul class="nav nav-pills float-right">
           <li class="nav-item">
             <a class="nav-link" href="/signup">Sign Up</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
-        </ul>
         {{/if}}
+      </ul>
       </nav>
       <h1><a href="/">FindMyMentor</a><h1>
     </header>
