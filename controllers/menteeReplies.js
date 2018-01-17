@@ -27,6 +27,9 @@ module.exports = (app) => {
       })
   })
 
+
+
+
   //new nested menteeReplies// New menteeReplies
     app.get('/menteeReplies/:menteeReplyid/new',(req,res) =>{
         MenteeReply.findById(req.params.menteeReplyid).then((menteeReplies)=>{
