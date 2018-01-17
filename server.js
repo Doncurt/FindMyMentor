@@ -12,10 +12,18 @@ const mongoose = require('mongoose');
 
 const app = express()
 // mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI ||'mongodb://127.0.0.1/findMyMentor');
+//mongoose.connect(process.env.MONGODB_URI ||'mongodb://127.0.0.1/findMyMentor');
 
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }));
+// to get css from other folders
+app.use(express.static('public'));
+
+
+// sets mongoose promise to built in JS promise
+mongoose.Promise = global.Promise;
+mongoose.connect(
+  'mongodb://localhost/findMyMentor', { useMongoClient: true });
 
 //middle wear for authori
 var checkAuth = (req, res, next) => {
