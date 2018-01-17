@@ -36,8 +36,9 @@ app.post('/mentor-posts', (req, res) => {
 })
 // SHOW
 app.get('/mentor-posts/:id', (req, res) => {
+  var currentUser = req.user;
   MentorPost.findById(req.params.id).then((mentorPosts) => {
-    res.render('mentor-posts-show', { mentorPosts,currentUser})
+    res.render('mentor-show', { mentorPosts,currentUser})
   }).catch((err) => {
     console.log(err.message);
   })

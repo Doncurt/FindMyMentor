@@ -12,10 +12,10 @@ module.exports = (app) => {
       console.log(req.body)
       // SAVE INSTANCE OF POST MODEL TO DB
 
-      MentorPost.findById(req.params.mentorPostId).then((MentorPost) => {
+      MentorPost.findById(req.params.mentorPostId).then((mentorPost) => {
         /// found a post by id
-        post.menteeReplies.unshift(menteeReply)
-        return post.save()
+        mentorPost.menteeReplies.unshift(menteeReply)
+        return mentorPost.save()
       }).then((mentorPostId) => {
         // post saved
         return menteeReply.save()
