@@ -14,7 +14,7 @@ module.exports = (app) => {
 
       MentorPost.findById(req.params.mentorPostId).then((mentorPost) => {
         /// found a post by id
-        mentorPost.menteeReplies.unshift(menteeReply)
+        mentorPost.menteeReply.unshift(menteeReply)
         return mentorPost.save()
       }).then((mentorPostId) => {
         // post saved
