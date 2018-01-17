@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <h1 class="lead">{{mentorPostspost.name}}</h1>
+    <p>{{mentorPosts.summary}}</p>
+    <p>{{mentorPosts.interest1}}</p>
+    <p>{{mentorPosts.socialLink1 }}</p>
+  </div>
+  <div class="col-sm-6 col-sm-offset-3">
+  <form method="POST" action="/mentor-posts/{{mentorPosts._id}}/comments">
+    <label for="comment-content"> Comment </label>
+    <textarea name="content" id="comment-content" class='form-control' placeholder="Comment"></textarea>
+    <div class="text-right">
+      <button type="submit">Comment</button>
+    </div>
+  </form>
+  <div>
+    <p>Comments:</p>
+    {{#each post.comments}}
+      <li class="list-group-item">
+        <p>Submitted by {{this.author.username}}<p>
+        <a href="/comments/{{this._id}}/new">Comment</a>
+        <p>{{this.content}}</p>
+        {{#if this.comments}}
+          {{> comments}}
+        {{/if}}
+      </li>
+    {{/each}}
+  </div>
+
+</div>

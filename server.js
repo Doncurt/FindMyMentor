@@ -25,22 +25,22 @@ mongoose.Promise = global.Promise;
 mongoose.connect(
   'mongodb://localhost/findMyMentor', { useMongoClient: true });
 
-//middle wear for authori
-var checkAuth = (req, res, next) => {
-  console.log("Checking authentication");
+  //middle wear for authori
+  var checkAuth = (req, res, next) => {
+    console.log("Checking authentication");
 
-  if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
-    req.user = null;
-  } else {
-    var token = req.cookies.nToken;
-    var decodedToken = jsonwebtoken.decode(token, { complete: true }) || {};
-    req.user = decodedToken.payload;
+    if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
+      req.user = null;
+    } else {
+      var token = req.cookies.nToken;
+      var decodedToken = jsonwebtoken.decode(token, { complete: true }) || {};
+      req.user = decodedToken.payload;
+    }
+
+    next()
   }
 
-  next()
-}
-
-app.use(checkAuth)
+  app.use(checkAuth)
 
 // Handlebars code for middle where
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));

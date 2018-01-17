@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
   var currentUser = req.user;
 
   MentorPost.find({}).then((mentorPosts) => {
+    const currentUser = req.user;
     res.render('mentor-index', { mentorPosts, currentUser })
   }).catch((err) => {
     console.log(err.message);
@@ -20,6 +21,7 @@ app.get('/', (req, res) => {
 })
 //CREATE'S GET ROUTE
 app.get('/mentor-posts/new', (req, res) => {
+  const currentUser = req.user;
   res.render('mentor-new', {});
 })
 
@@ -37,7 +39,8 @@ app.post('/mentor-posts', (req, res) => {
 // SHOW
 app.get('/mentor-posts/:id', (req, res) => {
   MentorPost.findById(req.params.id).then((mentorPosts) => {
-    res.render('mentor-posts-show', { mentorPosts,currentUser})
+    const currentUser = req.user;
+    res.render('mentor-posts-show', { mentorPosts, currentUser})
   }).catch((err) => {
     console.log(err.message);
   })
