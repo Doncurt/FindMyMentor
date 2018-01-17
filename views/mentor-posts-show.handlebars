@@ -7,14 +7,14 @@
   </div>
   <div class="col-sm-6 col-sm-offset-3">
   <form method="POST" action="/mentor-posts/{{mentorPosts._id}}/menteeReply">
-    <label for="comment-content"> CommentL </label>
+    <label for="comment-content"> Request a Mentor </label>
     <textarea name="content" id="menteeReply-content" class='form-control' placeholder="Comment"></textarea>
     <div class="text-right">
-      <button type="submit">Comment</button>
+      <button type="submit">Request Me!</button>
     </div>
   </form>
   <div>
-    <p>Comments:</p>
+    <p>Mentee Replies:</p>
     {{#each mentorPost.menteeReply}}
       <li class="list-group-item">
         <p>Submitted by {{this.author.username}}<p>

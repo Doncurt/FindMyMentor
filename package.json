@@ -4,6 +4,7 @@
   "description": "findMyMentor for web3",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js"
     "test": "mocha"
   },
   "repository": {
