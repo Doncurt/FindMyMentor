@@ -10,7 +10,7 @@ var MentorPostSchema = new Schema({
   , interest2        : { type: String, required: false }
   , interest3        : { type: String, required: false }
 , menteeReply       : [{ type: Schema.Types.ObjectId, ref: 'MenteeReply' }]
-, author         : { type: Schema.Types.ObjectId, ref: 'User', required: true }
+, author         : { type: Schema.Types.ObjectId, ref: 'User', required: false }
 });
 
 module.exports = mongoose.model('MentorPost', MentorPostSchema);

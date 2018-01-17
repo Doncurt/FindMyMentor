@@ -25,7 +25,9 @@ app.get('/mentor-posts/new', (req, res) => {
 
 // CREATE'S POST ROUTE
 app.post('/mentor-posts', (req, res) => {
-  MentorPost.create(req.body).then((mentorPosts) => {
+  req.body.author = req.user._id
+  var mentorPosts = new MentorPost(req.body);
+  mentorPosts.save().then((mentorPosts) => {
     console.log(mentorPosts);
     res.redirect('/');
   }).catch((err) => {
