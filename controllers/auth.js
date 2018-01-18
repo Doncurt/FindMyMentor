@@ -60,5 +60,3 @@ app.get('/login', (req, res, next)=> {
       return res.status(400).send({ err: err });
     });
   });
-
-}
