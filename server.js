@@ -52,5 +52,5 @@ require('./controllers/auth.js')(app)
 require('./controllers/mentorRoutes.js')(app)
 
 app.listen(process.env.PORT||3000, ()=> {
-  console.log('Server for PutIt listening on port 3000!')
+  console.log('Server for FindMyMentor listening on port 3000!')
 })
