@@ -10,6 +10,7 @@ const jsonwebtoken = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const app = express();
 // Middleware
 // // Body Parser, method override
 app.use(bodyParser.urlencoded({ extended: true }));
