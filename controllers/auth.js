@@ -1,62 +1,70 @@
-var jwt = require('jsonwebtoken');
-var User = require('../models/user');
-var mongoose = require('mongoose');
-module.exports = (app) => {
-      // CREATE
+const User = require('../models/user');
+const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
+// For testing
 
-// Route for entering the user infromation for the sign up
-    app.get('/signup', (req, res, next) => {
-      var currentUser = req.user;
-      res.render('signup', {currentUser: currentUser});
+module.exports = (app) => {
+    // Sign up page
+    app.get('/sign-up', (req, res) => {
+        // Render the sign-up page, else error
+        res.render('sign-up', {})
     })
 
-    // LOGIN FORM
-app.get('/login', (req, res, next)=> {
-  res.render('login');
-});
-    //Route to login to the site
-    // LOGIN
-    app.post('/login', (req, res, next)=> {
-    const username = req.body.username;
-    const password = req.body.password;
-    // Find this user name
-    User.findOne({ username }, 'username password').then((user) => {
-      if (!user) {
-        // User not found
-        return res.status(401).send({ message: 'Wrong Username or Password' });
-      }
-      // Check the password
-      user.comparePassword(password, (err, isMatch) => {
-        if (!isMatch) {
-          // Password does not match
-          return res.status(401).send({ message: "Wrong Username or password"});
-        }
-        // Create a token
-        const token = jwt.sign(
-          { _id: user._id, username: user.username }, process.env.SECRET,
-          { expiresIn: "60 days" }
-        );
-        // Set a cookie and redirect to root
-        res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
+    // Post for the sign-up
+    app.post('/sign-up', (req, res) => {
+        // Create User
+        let user = new User(req.body);
+        // For debugging
+        console.log("Username:", user, "\n\n");
+        console.log("Body:", req.body)
+
+        // Saving user and jwt token
+        user.save(() => {
+            // Else, use jwt to make token and save to cookie, then redirect
+            // NOTE: dotenv required
+            let token = jwt.sign({ _id: user._id, username: user.username }, process.env.SECRET, { expiresIn: "60 days" });
+            res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
+            res.redirect('/');
+        }).catch((err) => {
+            res.send(err.message)
+        })
+
+    });
+
+    // Logout; clears cookies
+    app.get('/logout', (req, res) => {
+        res.clearCookie('nToken');
         res.redirect('/');
-      });
-    }).catch((err) => {
-      console.log(err);
     });
-  });
 
-
-// SIGN UP POST
-  app.post('/signup', (req, res) => {
-    // Create User and JWT
-    const user = new User(req.body);
-
-    user.save().then((user) => {
-      var token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
-     res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
-     res.redirect('/');
-    }).catch((err) => {
-      console.log(err.message);
-      return res.status(400).send({ err: err });
+    // Login; render the login page
+    app.get('/login', (req, res) => {
+        res.render('login');
     });
-  });
+
+    // LOGIN
+    app.post('/login', (req, res) => {
+        // Find a user that matches username
+        User.findOne({ username: req.body.username }, "+password")
+        .then((user) => {
+            // If a user does not exist, return error
+            if(!user){
+                return res.status(401).send({ message: 'Wrong email or password' });
+            }
+            // Compares password
+            user.comparePassword(req.body.password, (err, isMatch) => {
+                // If password does not match, return error
+                if(!isMatch){
+                    return res.status(401).send({ message: 'Wrong email or password' });
+                }
+                // If it matches, make a cookie
+                let token = jwt.sign({ _id: user._id, username: user.username }, process.env.SECRET, { expiresIn: "60 days" });
+                res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
+                res.redirect('/');
+            })
+        }).catch((err) => {
+            res.send(err.message)
+        })
+    });
+
+}
