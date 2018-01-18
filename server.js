@@ -25,8 +25,6 @@ app.use(express.static('public'));
 
   //middle wear for authori
   var checkAuth = (req, res, next) => {
-    console.log("Checking authentication");
-
     if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
       req.user = null;
     } else {
