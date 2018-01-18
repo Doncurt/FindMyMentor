@@ -11,22 +11,22 @@ var UserSchema = new Schema({
   , mentorPosts        : [{ type: Schema.Types.ObjectId, ref: 'MentorPost' }]
 });
 
-UserSchema.pre('save', function(next){
+// Must use function here! ES6 => functions do not bind this!
+UserSchema.pre('save', function(next) {
   // SET createdAt AND updatedAt
-  var now = new Date();
+  const now = new Date();
   this.updatedAt = now;
   if ( !this.createdAt ) {
     this.createdAt = now;
   }
 
   // ENCRYPT PASSWORD
-  var user = this;
+  const user = this;
   if (!user.isModified('password')) {
     return next();
   }
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(user.password, salt, (err, hash) => {
-
       user.password = hash;
       next();
     });
@@ -34,8 +34,8 @@ UserSchema.pre('save', function(next){
 });
 
 
-UserSchema.methods.comparePassword = (password, done)=> {
-  bcrypt.compare(password, this.password, (err, isMatch)=> {
+UserSchema.methods.comparePassword = (password, done) => {
+  bcrypt.compare(password, this.password, (err, isMatch) => {
     done(err, isMatch);
   });
 };
