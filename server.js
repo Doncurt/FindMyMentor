@@ -34,7 +34,7 @@ mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/findMyMentor', {
       req.user = null;
     } else {
       var token = req.cookies.nToken;
-      var decodedToken = jsonwebtoken.decode(token, { complete: true }) || {};
+      var decodedToken = jwt.decode(token, { complete: true }) || {};
       req.user = decodedToken.payload;
     }
 
