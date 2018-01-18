@@ -17,7 +17,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/findMyMentor', { useMongoClient: true });
 
 
-app.use(cookieParser())
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 // to get css from other folders
 app.use(express.static('public'));
