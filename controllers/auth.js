@@ -1,25 +1,19 @@
 var jwt = require('jsonwebtoken');
-var User = require('../models/user');
+var User = require('../models/User');
 var mongoose = require('mongoose');
 module.exports = (app) => {
       // CREATE
 
 // Route for entering the user infromation for the sign up
     app.get('/signup', (req, res, next) => {
-
-      res.render('signup');
+      var currentUser = req.user;
+      res.render('signup', {currentUser: currentUser});
     })
 
     // LOGIN FORM
 app.get('/login', (req, res, next)=> {
   res.render('login');
 });
-
-// LOGOUT
-  app.get('/logout', (req, res) => {
-    res.clearCookie('nToken');
-    res.redirect('/');
-  });
     //Route to login to the site
     // LOGIN
     app.post('/login', (req, res, next)=> {
