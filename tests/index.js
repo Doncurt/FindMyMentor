@@ -18,3 +18,18 @@ describe('site', () => {                  // Describe what you are testing
       })
   })
 })
+
+// signup
+it('should be able to signup', (done)=> {
+  User.findOneAndRemove({ username: "testone" }, function() {
+    agent
+      .post('/signup')
+      .send({ username: "testone", password: "password" })
+      .end((err, res)=> {
+        console.log(res.body)
+        res.should.have.status(200);
+        res.should.have.cookie("nToken");
+        done();
+      });
+  });
+})
