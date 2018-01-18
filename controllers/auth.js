@@ -6,8 +6,8 @@ module.exports = (app) => {
 
 // Route for entering the user infromation for the sign up
     app.get('/signup', (req, res, next) => {
-      var currentUser = req.user;
-      res.render('signup', {currentUser: currentUser});
+
+      res.render('signup');
     })
 
     // LOGIN FORM
