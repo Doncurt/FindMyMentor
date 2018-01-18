@@ -21,7 +21,7 @@ app.use(cookieParser());
 // // Handlebars
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-const app = express()
+
 // sets mongoose promise to built in JS promise
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/findMyMentor', { useMongoClient: true });
