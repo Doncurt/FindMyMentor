@@ -51,8 +51,9 @@ app.post('/signup', (req, res) => {
     const user = new User(req.body);
 
     user.save().then((user) => {
-      var token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
-      console.log(user._id);
+      const token = jwt.sign({ _id: user._id, loggedin: "loggedin" }, process.env.SECRET, {
+        expiresIn: "60 days"
+      });
       res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
       res.redirect('/');
     }).catch((err) => {
