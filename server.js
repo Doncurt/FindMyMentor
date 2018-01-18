@@ -10,17 +10,23 @@ const jsonwebtoken = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-
+// Middleware
+// // Body Parser, method override
+app.use(bodyParser.urlencoded({ extended: true }));
+// // Express - public
+app.use(express.static('public'));
+// // Cookie Parser
+app.use(cookieParser());
+// // Handlebars
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 const app = express()
 // sets mongoose promise to built in JS promise
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/findMyMentor', { useMongoClient: true });
 
 
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
-// to get css from other folders
-app.use(express.static('public'));
+
 
 
 
@@ -38,12 +44,10 @@ app.use(express.static('public'));
   }
 
 app.use(checkAuth)
-// override with POST having ?_method=DELETE or ?_method=PUT
-app.use(methodOverride('_method'))
-// Handlebars code for middle where
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars');
 
+// Model
+const MentorPost = require('./models/mentorPost');
+const User = require('./models/user');
 //Rputes for navigation
 require('./controllers/auxRoutes.js')(app);
 require('./controllers/menteeReplies.js')(app);
