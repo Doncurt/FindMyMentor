@@ -1,14 +1,11 @@
-// .env rewuirement
-require('dotenv').config();
-//module imports and node
-const express = require('express')
-const methodOverride = require('method-override')
+require('dotenv').config()
+const express = require('express');
 const exphbs  = require('express-handlebars');
-const cookieParser = require('cookie-parser');
-const jsonwebtoken = require('jsonwebtoken');
-//bodyparser
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
+const cookieParser = require('cookie-parser')
+const jwt = require('jsonwebtoken');
+
 
 const app = express();
 // Middleware
