@@ -2,6 +2,7 @@
 require('dotenv').config();
 //module imports and node
 const express = require('express')
+const methodOverride = require('method-override')
 const exphbs  = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const jsonwebtoken = require('jsonwebtoken');
@@ -37,7 +38,8 @@ app.use(express.static('public'));
   }
 
 app.use(checkAuth)
-
+// override with POST having ?_method=DELETE or ?_method=PUT
+app.use(methodOverride('_method'))
 // Handlebars code for middle where
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
