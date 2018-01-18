@@ -6,8 +6,8 @@ var UserSchema = new Schema({
     createdAt       : { type: Date }
   , updatedAt       : { type: Date }
 
-  , password        : { type: String, select: true }
-  , username        : { type: String, required: false }
+  , password        : { type: String, select: false }
+  , username        : { type: String, required: true }
   , mentorPosts        : [{ type: Schema.Types.ObjectId, ref: 'MentorPost' }]
 });
 
