@@ -47,7 +47,7 @@ app.get('/login', (req, res, next)=> {
 
 
 // SIGN UP POST
-  app.post('/sign-up', (req, res) => {
+  app.post('/signup', (req, res) => {
     // Create User and JWT
     const user = new User(req.body);
 
