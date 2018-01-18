@@ -27,20 +27,20 @@ mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/findMyMentor', {
 
 
 
-
-  //middle wear for authori
-  var checkAuth = (req, res, next) => {
-    if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
-      req.user = null;
-    } else {
-      var token = req.cookies.nToken;
-      var decodedToken = jwt.decode(token, { complete: true }) || {};
-      req.user = decodedToken.payload;
-    }
-
-    next()
+// // Authorization
+let checkAuth = (req, res, next) => {
+  // If there's a cookie, they should be logged in
+  if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
+    req.user = null;
+  } else {
+    // Success! Decode the token, then put that payload into req.user
+    let token = req.cookies.nToken;
+    let decodedToken = jwt.decode(token, { complete: true }) || {};
+    req.user = decodedToken.payload;
   }
-
+  next()
+}
+// // Run checkAuth
 app.use(checkAuth)
 
 // Model
