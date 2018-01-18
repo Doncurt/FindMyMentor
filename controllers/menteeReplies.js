@@ -47,7 +47,7 @@ module.exports = (app) => {
        MenteeReply.findById(req.params.menteeReplyid).then((origcomment)=>{
            // findById resolved
            console.log(origcomment)
-           origcomment.menteeReplies.unshift(menteeReply)
+           origcomment.menteeReply.unshift(menteeReply)
            return origcomment.save()
        }).then((origcomment) => {
            // post.save resolved

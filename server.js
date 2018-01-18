@@ -39,7 +39,7 @@ mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/findMyMentor', {
     next()
   }
 
-  app.use(checkAuth)
+app.use(checkAuth)
 
 // Handlebars code for middle where
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
