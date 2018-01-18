@@ -5,13 +5,13 @@ const mongoose = require('mongoose');
 
 module.exports = (app) => {
     // Sign up page
-    app.get('/sign-up', (req, res) => {
+    app.get('/signup', (req, res) => {
         // Render the sign-up page, else error
         res.render('sign-up', {})
     })
 
     // Post for the sign-up
-    app.post('/sign-up', (req, res) => {
+    app.post('/signup', (req, res) => {
         // Create User
         let user = new User(req.body);
         // For debugging
