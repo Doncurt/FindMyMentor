@@ -11,6 +11,7 @@ var UserSchema = new Schema({
   , mentorPosts        : [{ type: Schema.Types.ObjectId, ref: 'MentorPost' }]
 });
 
+
 // Must use function here! ES6 => functions do not bind this!
 UserSchema.pre('save', function(next) {
   // SET createdAt AND updatedAt
