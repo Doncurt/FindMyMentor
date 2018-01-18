@@ -7,7 +7,7 @@ module.exports = (app) => {
     // Sign up page
     app.get('/signup', (req, res) => {
         // Render the sign-up page, else error
-        res.render('sign-up', {})
+        res.render('signup', {})
     })
 
     // Post for the sign-up
