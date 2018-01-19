@@ -48,7 +48,7 @@ const MentorPost = require('./models/mentorPost');
 const User = require('./models/user');
 //Rputes for navigation
 require('./controllers/auxRoutes.js')(app);
-require('./controllers/menteeReplies.js')(app);
+require('./controllers/comments.js')(app);
 require('./controllers/auth.js')(app)
 require('./controllers/mentorRoutes.js')(app)
 
