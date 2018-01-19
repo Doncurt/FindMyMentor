@@ -9,7 +9,7 @@ var MentorPostSchema = new Schema({
   , interest1        : { type: String, required: true }
   , interest2        : { type: String, required: false }
   , interest3        : { type: String, required: false }
-, comments       : [{ type: Schema.Types.ObjectId, ref: 'Comments' }]
+, comments       : [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
 , author         : { type: Schema.Types.ObjectId, ref: 'User', required: false }
 });
 

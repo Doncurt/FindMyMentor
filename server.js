@@ -46,6 +46,7 @@ app.use(checkAuth)
 // Model
 const MentorPost = require('./models/mentorPost');
 const User = require('./models/user');
+const Comment = require('./models/comment');
 //Rputes for navigation
 require('./controllers/auxRoutes.js')(app);
 require('./controllers/comments.js')(app);
