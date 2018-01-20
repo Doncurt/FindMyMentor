@@ -29,8 +29,8 @@ app.get('/mentor-posts/new', (req, res) => {
 app.post('/mentor-posts', (req, res) => {
   req.body.author = req.user._id
   var mentorPosts = new MentorPost(req.body);
-  mentorPosts.save().then((mentorPosts) => {
-    console.log(mentorPosts);
+  mentorPosts.save().then((mentorPost) => {
+    console.log(mentorPost);
     res.redirect('/');
   }).catch((err) => {
     console.log(err.message);
@@ -39,9 +39,9 @@ app.post('/mentor-posts', (req, res) => {
 // SHOW
 app.get('/mentor-posts/:id', (req, res) => {
   var currentUser = req.user;
-  MentorPost.findById(req.params.id).then((mentorPosts) => {
+  MentorPost.findById(req.params.id).then((mentorPost) => {
     const currentUser = req.user;
-    res.render('mentor-posts-show', { mentorPosts, currentUser})
+    res.render('mentor-posts-show', { mentorPost, currentUser})
   }).catch((err) => {
     console.log(err.message);
   })
